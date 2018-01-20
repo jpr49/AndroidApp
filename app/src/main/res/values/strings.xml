@@ -18,12 +18,13 @@
     <string name="empty_field">Field cannot be empty</string>
     <string name="passwords_notEqual">Passwords do not match</string>
     <string name="invalid_password">Passwords must have at least six (6) characters</string>
-    <string name="register_failed">Oops, check information before registration</string>
+    <string name="register_failed">Oops, please double-check information before registration</string>
     <string name="ask_toCloseMessage">Close Student Euro Tracker?</string>
     <string name="ask_toCancelRegMessage">Cancel registration?</string>
     <string name="ask_toLeaveDashboard">Log out of dashboard?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="understand">Okay, I understand</string>
     <string name="test_dashboard">Now in the main dashboard</string>
     <string name="header_income">Income</string>
     <string name="header_expenses">Expenses</string>
@@ -38,20 +39,18 @@
     <string name="hint_food">Food</string>
     <string name="hint_transport">Transport</string>
     <string name="hint_personal">Personal</string>
-    <string name="calculate_total">Total Monthly Income</string>
-    <string name="calculate_totalExp">Total Monthly Expenses</string>
+    <string name="calculate_total">Update Total Income</string>
+    <string name="calculate_totalExp">Update Expenses</string>
     <string name="total_weekly">Weekly Total</string>
     <string name="total_monthly">Monthly Total</string>
-    <string name="showWeeklyIncome">Weekly income = €</string>
-    <string name="stub_ShowWeeklyIncome">Weekly income = €0.0</string>
-    <string name="showMonthlyIncome">Monthly Income = €</string>
-    <string name="stub_ShowMonthlyIncome">Monthly Income = €0.0</string>
-    <string name="showMonthlyExpenses">Monthly Expenses = €</string>
-    <string name="stub_ShowMonthlyExpenses">Monthly Expenses = €0.0</string>
+    <string name="showMonthlyIncome">Monthly Income\n€</string>
+    <string name="stub_ShowMonthlyIncome">Monthly Income\n€0.00</string>
+    <string name="showMonthlyExpenses">Monthly Expenses\n€</string>
+    <string name="stub_ShowMonthlyExpenses">Monthly Expenses\n€0.00</string>
     <string name="show_summary">Account Summary</string>
     <string name="summary_good">Good standing! (GREEN)</string>
     <string name="summary_okay">Decent standing! (YELLOW)</string>
     <string name="summary_caution">Cautious standing! (ORANGE)</string>
-    <string name="summary_bad">Bad standinG! (RED)</string>
-    <string name="summary_unknown">Double-check numbers</string>
+    <string name="summary_bad">Bad standing! (RED)</string>
+    <string name="summary_unknown">Oops, please double-check numbers</string>
 </resources>

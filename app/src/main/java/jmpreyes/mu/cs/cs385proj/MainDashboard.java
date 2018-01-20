@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,13 +21,14 @@ import java.text.DecimalFormat;
 
 public class MainDashboard extends AppCompatActivity {
 
-    EditText moStuAidInc, moEmpInc, moSavInc, moOthInc;
-    EditText moRentExp, moFoodExp, moTransportExp, moPersonalExp;
-    Button calcInc, calcExp;
-    double moStuAidDbl, moEmpIncDbl, moSavIncDbl, moOthIncDbl;
-    double moRentDbl, moFoodDbl, moTransportDbl, moPersonalDbl;
-    TextView tv_monthlyInc, tv_monthlyExp;
-
+    private final String FORMAT = "#.##";
+    private DecimalFormat df = new DecimalFormat(FORMAT);
+    private EditText moStuAidInc, moEmpInc, moSavInc, moOthInc;
+    private EditText moRentExp, moFoodExp, moTransportExp, moPersonalExp;
+    private Button calcInc, calcExp;
+    private double moStuAidDbl, moEmpIncDbl, moSavIncDbl, moOthIncDbl;
+    private double moRentDbl, moFoodDbl, moTransportDbl, moPersonalDbl;
+    private TextView tv_monthlyInc, tv_monthlyExp;
     private double monthlyIncome, monthlyExpenses;
 
     private void setMonthlyIncome(double d) {
@@ -99,28 +101,29 @@ public class MainDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (moRentExp.getText().toString().isEmpty()) {
-                    moRentDbl = 0.0;
+                    moRentDbl = 0.00;
                 } else {
                     moRentDbl = Double.parseDouble(moRentExp.getText().toString());
                 }
                 if (moFoodExp.getText().toString().isEmpty()) {
-                    moFoodDbl = 0.0;
+                    moFoodDbl = 0.00;
                 } else {
                     moFoodDbl = Double.parseDouble(moFoodExp.getText().toString());
                 }
                 if (moTransportExp.getText().toString().isEmpty()) {
-                    moTransportDbl = 0.0;
+                    moTransportDbl = 0.00;
                 } else {
                     moTransportDbl = Double.parseDouble(moTransportExp.getText().toString());
                 }
                 if (moPersonalExp.getText().toString().isEmpty()) {
-                    moPersonalDbl = 0.0;
+                    moPersonalDbl = 0.00;
                 } else {
                     moPersonalDbl = Double.parseDouble(moPersonalExp.getText().toString());
                 }
                 double monthlyExps = moRentDbl + moFoodDbl + moTransportDbl + moPersonalDbl;
                 setMonthlyExpenses(monthlyExps);
-                tv_monthlyExp.setText(getResources().getString(R.string.showMonthlyExpenses) + Double.toString(monthlyExps));
+                tv_monthlyExp.setText(getResources().getString(R.string.showMonthlyExpenses) + df.format(monthlyExps));
+                //tv_monthlyExp.setText(getResources().getString(R.string.showMonthlyExpenses) + Double.toString(monthlyExps));
             }
         });
 
@@ -137,19 +140,40 @@ public class MainDashboard extends AppCompatActivity {
             public void onClick(View view) {
                 double inc = getMonthlyIncome();
                 double exp = getMonthlyExpenses();
-                double quotient = 0.0;
+                double diff = (inc - exp);
+                double perc = (diff / inc) * 100;
 
-                if (quotient <= 1.0 && quotient >= 0.76) {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.summary_good).toString(), Toast.LENGTH_SHORT).show();
-                } else if (quotient <= 0.75 && quotient >= 0.51) {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.summary_okay).toString(), Toast.LENGTH_SHORT).show();
-                } else if (quotient <= 0.50 && quotient >= 0.26) {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.summary_caution).toString(), Toast.LENGTH_SHORT).show();
-                } else if (quotient <= 0.25 && quotient >= 0.0) {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.summary_good).toString(), Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder alertSummary = new AlertDialog.Builder(MainDashboard.this);
+
+                if (perc >= 76 && perc <= 100) {
+                    alertSummary.setTitle(Html.fromHtml("<font-color='#008000'>Managable budget!</font>"));
+                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
+                } else if (perc >= 51 && perc <= 75) {
+                    alertSummary.setTitle(Html.fromHtml("<font-color='#FFFF00'>Decent budget!</font>"));
+                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
+                } else if (perc >= 26 && perc <=50) {
+                    alertSummary.setTitle(Html.fromHtml("<font-color='#FFA500'>Cautious budget!</font>"));
+                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
+                } else if (perc >= 0 && perc <= 25) {
+                    alertSummary.setTitle(Html.fromHtml("<font-color='#FF0000'>Critical budget!</font>"));
+                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
                 } else {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.summary_unknown).toString(), Toast.LENGTH_SHORT).show();
+                    alertSummary.setTitle(Html.fromHtml("<font-color='#FF0000'>No budget!</font>"));
+                    alertSummary.setMessage("You spend more than you can save in a month!");
                 }
+
+                alertSummary.setCancelable(true);
+
+                alertSummary.setPositiveButton(
+                        getResources().getString(R.string.understand),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                AlertDialog showAlertSummary = alertSummary.create();
+                showAlertSummary.show();
             }
         });
     }

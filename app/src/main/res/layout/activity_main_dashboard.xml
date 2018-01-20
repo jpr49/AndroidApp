@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_alignParentTop="true"
-        android:background="#85c1e9"
+        android:background="#87CEFA"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -20,18 +20,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#27ae60"
+            android:background="#FAEBD7"
+            android:padding="5dp"
             android:text="@string/stub_ShowMonthlyIncome"
-            android:textColor="#FFFFFF" />
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/text_showMonthlyExp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:background="#27ae60"
+            android:background="#FAEBD7"
+            android:padding="5dp"
             android:text="@string/stub_ShowMonthlyExpenses"
-            android:textColor="#FFFFFF" />
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -75,15 +81,6 @@
                     android:textSize="11pt"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/header_monthly"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/header_monthly"
-                    android:textAlignment="center"
-                    android:textSize="11pt"
-                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
