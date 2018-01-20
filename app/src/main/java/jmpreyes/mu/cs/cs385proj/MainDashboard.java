@@ -145,19 +145,19 @@ public class MainDashboard extends AppCompatActivity {
 
                 if (perc >= 76 && perc <= 100) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#008000'>Managable budget!</font>"));
-                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
+                    alertSummary.setMessage("You save " + df.format(perc) + "%!");
                 } else if (perc >= 51 && perc <= 75) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FFFF00'>Decent budget!</font>"));
-                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
+                    alertSummary.setMessage("You save " + df.format(perc) + "%!");
                 } else if (perc >= 26 && perc <=50) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FFA500'>Cautious budget!</font>"));
-                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
+                    alertSummary.setMessage("You save " + df.format(perc) + "%!");
                 } else if (perc >= 0 && perc <= 25) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FF0000'>Critical budget!</font>"));
-                    alertSummary.setMessage("You save " + df.format(perc) + "% per month.");
+                    alertSummary.setMessage("You save " + df.format(perc) + "%!");
                 } else {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FF0000'>No budget!</font>"));
-                    alertSummary.setMessage("You spend more than you can save in a month!");
+                    alertSummary.setMessage("You spend more than you can save! Be careful!");
                 }
 
                 alertSummary.setCancelable(true);

@@ -43,15 +43,18 @@
     <string name="calculate_totalExp">Update Expenses</string>
     <string name="total_weekly">Weekly Total</string>
     <string name="total_monthly">Monthly Total</string>
-    <string name="showMonthlyIncome">Monthly Income\n€</string>
-    <string name="stub_ShowMonthlyIncome">Monthly Income\n€0.00</string>
-    <string name="showMonthlyExpenses">Monthly Expenses\n€</string>
-    <string name="stub_ShowMonthlyExpenses">Monthly Expenses\n€0.00</string>
+    <string name="showMonthlyIncome">Total Income\n€</string>
+    <string name="stub_ShowMonthlyIncome">Total Income\n€0.00</string>
+    <string name="showMonthlyExpenses">Total Expenses\n€</string>
+    <string name="stub_ShowMonthlyExpenses">Total Expenses\n€0.00</string>
     <string name="show_summary">Account Summary</string>
     <string name="summary_good">Good standing! (GREEN)</string>
     <string name="summary_okay">Decent standing! (YELLOW)</string>
     <string name="summary_caution">Cautious standing! (ORANGE)</string>
     <string name="summary_bad">Bad standing! (RED)</string>
     <string name="summary_unknown">Oops, please double-check numbers</string>
-    <string-array name="frequency">Select Option</string-array>
+    <string-array name="frequency">
+        <item>Weekly</item>
+        <item>Monthly</item>
+    </string-array>
 </resources>

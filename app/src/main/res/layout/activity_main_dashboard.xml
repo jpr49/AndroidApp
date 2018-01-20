@@ -224,16 +224,14 @@
                         android:textSize="11pt"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/header_monthlyExp"
+                    <Spinner
+                        android:id="@+id/option_select"
                         android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="@string/header_monthly"
-                        android:textAlignment="center"
-                        android:textColor="@android:color/white"
-                        android:textSize="11pt"
-                        android:textStyle="bold" />
+                        android:entries="@array/frequency"
+                        android:spinnerMode="dialog" />
+
                 </LinearLayout>
 
                 <LinearLayout
