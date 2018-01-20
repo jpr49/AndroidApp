@@ -1,9 +1,7 @@
 package jmpreyes.mu.cs.cs385proj;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,12 +48,12 @@ public class Login extends AppCompatActivity {
                     setInputPassword(password.getText().toString());
 
                     if (getInputUsername().contains("admin") && getInputPassword().contains("password")) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_success).toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_success), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Login.this, MainDashboard.class);
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_failed).toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_failed), Toast.LENGTH_SHORT).show();
                         return;
                     }
                 }
@@ -64,7 +62,7 @@ public class Login extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.new_registration).toString(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.new_registration), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Login.this, Register.class);
                     startActivity(intent);
                 }

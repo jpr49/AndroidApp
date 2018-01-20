@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="jmpreyes.mu.cs.cs385proj.MainDashboard">
+    tools:context="jmpreyes.mu.cs.cs385proj.MainDashboard"
+    android:background="@drawable/dashboard_img">
 
     <LinearLayout
         android:id="@+id/header"
@@ -76,8 +77,11 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:background="@android:color/holo_green_light"
                     android:text="@string/header_income"
                     android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textColorLink="@color/colorPrimary"
                     android:textSize="11pt"
                     android:textStyle="bold" />
 
@@ -95,6 +99,7 @@
                     android:layout_weight="1"
                     android:text="@string/hint_studentAid"
                     android:textAlignment="center"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -120,6 +125,7 @@
                     android:layout_weight="1"
                     android:text="@string/hint_employment"
                     android:textAlignment="center"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -145,6 +151,7 @@
                     android:layout_weight="1"
                     android:text="@string/hint_savings"
                     android:textAlignment="center"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -170,6 +177,7 @@
                     android:layout_weight="1"
                     android:text="@string/hint_other"
                     android:textAlignment="center"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -187,7 +195,10 @@
                 android:id="@+id/calc_totalInc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/calculate_total" />
+                android:background="@android:color/holo_green_light"
+                android:text="@string/calculate_total"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:id="@+id/expensesLine"
@@ -198,6 +209,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:background="@android:color/holo_red_light"
                     android:orientation="horizontal">
 
                     <TextView
@@ -207,6 +219,8 @@
                         android:layout_weight="1"
                         android:text="@string/header_expenses"
                         android:textAlignment="center"
+                        android:textColor="@android:color/white"
+                        android:textColorLink="@color/colorPrimary"
                         android:textSize="11pt"
                         android:textStyle="bold" />
 
@@ -217,6 +231,7 @@
                         android:layout_weight="1"
                         android:text="@string/header_monthly"
                         android:textAlignment="center"
+                        android:textColor="@android:color/white"
                         android:textSize="11pt"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -233,6 +248,7 @@
                         android:layout_weight="1"
                         android:hint="@string/hint_rent"
                         android:textAlignment="center"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -258,6 +274,7 @@
                         android:layout_weight="1"
                         android:hint="@string/hint_food"
                         android:textAlignment="center"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -283,6 +300,7 @@
                         android:layout_weight="1"
                         android:hint="@string/hint_transport"
                         android:textAlignment="center"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -308,6 +326,7 @@
                         android:layout_weight="1"
                         android:hint="@string/hint_personal"
                         android:textAlignment="center"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                     <EditText
@@ -327,13 +346,19 @@
                 android:id="@+id/calc_totalExp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/calculate_totalExp" />
+                android:background="@android:color/holo_red_light"
+                android:text="@string/calculate_totalExp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/show_summary"/>
+                android:background="#87CEFA"
+                android:text="@string/show_summary"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

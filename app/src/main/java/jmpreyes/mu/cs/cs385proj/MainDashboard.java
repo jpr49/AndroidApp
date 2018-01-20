@@ -3,6 +3,7 @@ package jmpreyes.mu.cs.cs385proj;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,15 +21,14 @@ import org.w3c.dom.Text;
 import java.text.DecimalFormat;
 
 public class MainDashboard extends AppCompatActivity {
-
     private final String FORMAT = "#.##";
     private DecimalFormat df = new DecimalFormat(FORMAT);
     private EditText moStuAidInc, moEmpInc, moSavInc, moOthInc;
     private EditText moRentExp, moFoodExp, moTransportExp, moPersonalExp;
-    private Button calcInc, calcExp;
+    private Button calcInc, calcExp, summary;
+    private TextView tv_monthlyInc, tv_monthlyExp;
     private double moStuAidDbl, moEmpIncDbl, moSavIncDbl, moOthIncDbl;
     private double moRentDbl, moFoodDbl, moTransportDbl, moPersonalDbl;
-    private TextView tv_monthlyInc, tv_monthlyExp;
     private double monthlyIncome, monthlyExpenses;
 
     private void setMonthlyIncome(double d) {
@@ -64,6 +64,7 @@ public class MainDashboard extends AppCompatActivity {
 
         calcInc = (Button)findViewById(R.id.calc_totalInc);
         calcExp = (Button)findViewById(R.id.calc_totalExp);
+        summary = (Button)findViewById(R.id.btn_summary);
 
         tv_monthlyInc = (TextView)findViewById(R.id.text_showMonthlyIncTotal);
         tv_monthlyExp = (TextView)findViewById(R.id.text_showMonthlyExp);
@@ -72,29 +73,28 @@ public class MainDashboard extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (moStuAidInc.getText().toString().isEmpty()) {
-                    moStuAidDbl = 0.0;
+                    moStuAidDbl = 0.00;
                 } else {
                     moStuAidDbl = Double.parseDouble(moStuAidInc.getText().toString());
                 }
                 if (moEmpInc.getText().toString().isEmpty()) {
-                    moEmpIncDbl = 0.0;
+                    moEmpIncDbl = 0.00;
                 } else {
                     moEmpIncDbl = Double.parseDouble(moEmpInc.getText().toString());
                 }
                 if (moSavInc.getText().toString().isEmpty()) {
-                    moSavIncDbl = 0.0;
+                    moSavIncDbl = 0.00;
                 } else {
                     moSavIncDbl = Double.parseDouble(moSavInc.getText().toString());
                 }
                 if (moOthInc.getText().toString().isEmpty()) {
-                    moOthIncDbl = 0.0;
+                    moOthIncDbl = 0.00;
                 } else {
                     moOthIncDbl = Double.parseDouble(moOthInc.getText().toString());
                 }
                 double monthlySum = moStuAidDbl + moEmpIncDbl + moSavIncDbl + moOthIncDbl;
                 setMonthlyIncome(monthlySum);
                 tv_monthlyInc.setText(getResources().getString(R.string.showMonthlyIncome) + df.format(monthlySum));
-                //tv_monthlyInc.setText(getResources().getString(R.string.showMonthlyIncome) + Double.toString(monthlySum));
             }
         });
 
@@ -124,7 +124,6 @@ public class MainDashboard extends AppCompatActivity {
                 double monthlyExps = moRentDbl + moFoodDbl + moTransportDbl + moPersonalDbl;
                 setMonthlyExpenses(monthlyExps);
                 tv_monthlyExp.setText(getResources().getString(R.string.showMonthlyExpenses) + df.format(monthlyExps));
-                //tv_monthlyExp.setText(getResources().getString(R.string.showMonthlyExpenses) + Double.toString(monthlyExps));
             }
         });
 
@@ -134,8 +133,6 @@ public class MainDashboard extends AppCompatActivity {
         // YELLOW = #FFFF00     51 - 75%
         // GREEN = #008000      76 - 100%
 
-        Button summary;
-        summary = (Button)findViewById(R.id.btn_summary);
         summary.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -164,7 +161,6 @@ public class MainDashboard extends AppCompatActivity {
                 }
 
                 alertSummary.setCancelable(true);
-
                 alertSummary.setPositiveButton(
                         getResources().getString(R.string.understand),
                         new DialogInterface.OnClickListener() {
