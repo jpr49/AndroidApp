@@ -1,7 +1,9 @@
 package jmpreyes.mu.cs.cs385proj;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -12,10 +14,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
-    public final int PW_MINIMUM = 6;
-
     private EditText firstName, lastName, userName, password, confirmPW;
     private Button completeReg, cancelReg;
+
+    private SharedPreferences user_list;
+    private SharedPreferences.Editor editor;
+
+    public final int PW_MINIMUM = 6;
+    public final String MY_PREFS = "UserPreferences";
+    public final String KEY_FNAME = "FirstName";
+    public final String KEY_LNAME = "LastName";
+    public final String KEY_UNAME = "UserName";
+    public final String KEY_PASSWORD = "Password";
+    public final String KEY_CONFIRMPW = "ConfirmPassword";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +41,6 @@ public class Register extends AppCompatActivity {
         completeReg = (Button)findViewById(R.id.btn_regFinishReg);
         cancelReg = (Button)findViewById(R.id.btn_regCancelReg);
 
-        ////////////////////////////////////////////////////////////////////////////////
-        // NEED TO IMPLEMENT SHARED PREFERENCES
-        // if the fields are valid and they don't already exist in file, add/write them
-        // else, prompt user that account exists
-        ////////////////////////////////////////////////////////////////////////////////
-
         completeReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +48,14 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.register_failed).toString(), Toast.LENGTH_SHORT).show();
                     return;
                 } else {
+                    user_list = getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
+                    editor = user_list.edit();
+                    editor.putString(KEY_FNAME, firstName.getText().toString());
+                    editor.putString(KEY_LNAME, lastName.getText().toString());
+                    editor.putString(KEY_UNAME, userName.getText().toString());
+                    editor.putString(KEY_PASSWORD, password.getText().toString());
+                    editor.putString(KEY_CONFIRMPW, confirmPW.getText().toString());
+                    editor.apply();
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.register_success).toString(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(Register.this, MainDashboard.class);
                     startActivity(intent);
