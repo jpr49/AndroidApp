@@ -12,12 +12,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
+    public final int PW_MINIMUM = 6;
 
-    static final int PW_MINIMUM = 6;
-
-    // five EditTexts, two Buttons
-    EditText firstName, lastName, userName, password, confirmPW;
-    Button completeReg, cancelReg;
+    private EditText firstName, lastName, userName, password, confirmPW;
+    private Button completeReg, cancelReg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

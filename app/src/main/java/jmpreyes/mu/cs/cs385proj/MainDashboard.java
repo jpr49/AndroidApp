@@ -93,7 +93,8 @@ public class MainDashboard extends AppCompatActivity {
                 }
                 double monthlySum = moStuAidDbl + moEmpIncDbl + moSavIncDbl + moOthIncDbl;
                 setMonthlyIncome(monthlySum);
-                tv_monthlyInc.setText(getResources().getString(R.string.showMonthlyIncome) + Double.toString(monthlySum));
+                tv_monthlyInc.setText(getResources().getString(R.string.showMonthlyIncome) + df.format(monthlySum));
+                //tv_monthlyInc.setText(getResources().getString(R.string.showMonthlyIncome) + Double.toString(monthlySum));
             }
         });
 

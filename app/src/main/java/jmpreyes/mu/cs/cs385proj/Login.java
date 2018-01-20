@@ -1,7 +1,9 @@
 package jmpreyes.mu.cs.cs385proj;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +13,25 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
+    private EditText username, password;
+    private Button login, register;
+    private String input_username, input_password;
 
-    // two EditTexts and Buttons
-    EditText username, password;
-    Button login, register;
+    private void setInputUsername(String u) {
+        input_username = u;
+    }
+
+    private void setInputPassword(String p) {
+        input_password = p;
+    }
+
+    public String getInputUsername() {
+        return input_username;
+    }
+
+    public String getInputPassword() {
+        return input_password;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +43,13 @@ public class Login extends AppCompatActivity {
         login = (Button)findViewById(R.id.btn_login);
         register = (Button)findViewById(R.id.btn_register);
 
-        ////////////////////////////////////////////////////////////////
-        // ACCESS SHARED PREFERENCES
-        // if the user already exists in file, proceed to main dashboard
-        // else, prompt user to register
-        ////////////////////////////////////////////////////////////////
-
-        // change expression in first if statement to check if user exists in SP
-
         login.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (!username.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
+                    setInputUsername(username.getText().toString());
+                    setInputPassword(password.getText().toString());
+
+                    if (getInputUsername().contains("admin") && getInputPassword().contains("password")) {
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.login_success).toString(), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Login.this, MainDashboard.class);
                         startActivity(intent);
