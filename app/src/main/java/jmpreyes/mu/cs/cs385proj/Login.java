@@ -37,8 +37,10 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        /*
         MediaPlayer mp = MediaPlayer.create(Login.this, R.raw.login_sound);
         mp.start();
+        */
 
         username = (EditText)findViewById(R.id.text_username);
         password = (EditText)findViewById(R.id.text_password);
