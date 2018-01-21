@@ -2,6 +2,7 @@ package jmpreyes.mu.cs.cs385proj;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,6 +36,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        MediaPlayer mp = MediaPlayer.create(Login.this, R.raw.login_sound);
+        mp.start();
 
         username = (EditText)findViewById(R.id.text_username);
         password = (EditText)findViewById(R.id.text_password);

@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -142,22 +144,33 @@ public class MainDashboard extends AppCompatActivity {
                 double perc = (diff / inc) * 100;
 
                 AlertDialog.Builder alertSummary = new AlertDialog.Builder(MainDashboard.this);
+                MediaPlayer mp;
 
                 if (perc >= 76 && perc <= 100) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#008000'>Managable budget!</font>"));
                     alertSummary.setMessage("You save " + df.format(perc) + "%!");
+                    mp = MediaPlayer.create(getApplicationContext(), R.raw.good_decent_sound);
+                    mp.start();
                 } else if (perc >= 51 && perc <= 75) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FFFF00'>Decent budget!</font>"));
                     alertSummary.setMessage("You save " + df.format(perc) + "%!");
+                    mp = MediaPlayer.create(getApplicationContext(), R.raw.good_decent_sound);
+                    mp.start();
                 } else if (perc >= 26 && perc <=50) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FFA500'>Cautious budget!</font>"));
                     alertSummary.setMessage("You save " + df.format(perc) + "%!");
+                    mp = MediaPlayer.create(getApplicationContext(), R.raw.critical_bad_sound);
+                    mp.start();
                 } else if (perc >= 0 && perc <= 25) {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FF0000'>Critical budget!</font>"));
                     alertSummary.setMessage("You save " + df.format(perc) + "%!");
+                    mp = MediaPlayer.create(getApplicationContext(), R.raw.critical_bad_sound);
+                    mp.start();
                 } else {
                     alertSummary.setTitle(Html.fromHtml("<font-color='#FF0000'>No budget!</font>"));
                     alertSummary.setMessage("You spend more than you can save! Be careful!");
+                    mp = MediaPlayer.create(getApplicationContext(), R.raw.critical_bad_sound);
+                    mp.start();
                 }
 
                 alertSummary.setCancelable(true);
